@@ -15,9 +15,15 @@ function logging<T extends Lengthwise & Sizehwise>(a: T): T {
 ///////////////////////
 
 interface Car {
-  model: number;
+  model: string;
   year: number;
 }
+
+type Optional<T> = { 
+  readonly [P in keyof T]?: T[P]
+}
+
+type optCar = Optional<Car>;
 
 type CarKeyOff = keyof Car;
 
@@ -29,7 +35,7 @@ function test(par: indexerType) {
 
 var par: indexerType;
 par = {};
-var audi = { model: 21, year: 2010 } as Car;
+var audi = { model: 'l', year: 2010 } as Car;
 par['audi'] = audi;
 test(par);
 
