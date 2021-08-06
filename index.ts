@@ -42,4 +42,29 @@ test(par);
 console.log();
 
 /////////////////////////////////////
+export function invoke<T extends Car>(val: 
+  { [key in keyof T & { key: Car }] }
+  ){
+console.log(val);
+};
 
+invoke<Car>(audi);
+
+type keyType<T extends number> = { [key in T & { [key: string]: number } ] } ; 
+
+
+function k(en: keyType<Type>) {
+
+}
+
+enum Type{
+  first= 1,
+  two = 3,
+  three = 5
+}
+
+var keys = Object.keys(Type).filter(key => isNaN(+key))
+console.log(keys);
+
+var values = keys.map(_ => ({ name: _, value: Type[_] }));
+console.log(values)
